@@ -11,15 +11,17 @@ const airtable = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY })
 
 const nodemailer = require('nodemailer')
 
+
 const transporter = nodemailer.createTransport({
   service: 'Gmail', // Use Gmail as the email service
   port: 587, // TLS (secure) port for Gmail
-  secure: false,
+  secure: false, // Set to true for TLS
   auth: {
     user: 'adamadiouf2017@gmail.com', // Your Gmail address
-    pass: process.env.EMAIL_PASSPORT,
+    pass: process.env.EMAIL_PASSPORT, // Your Gmail password or application-specific password
   },
 })
+
 exports.handler = async (event, context, cb) => {
   try {
     // Parse the form data from the event object (modify this part based on your form submission)
